@@ -4,7 +4,7 @@ const fs = require('fs');
 const port = process.env.PORT || 3000;
 var app = express();
 
-hbs.registerPartials(__dirname + '/views/partials')
+hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
 
 
@@ -51,9 +51,17 @@ app.get('/', (req, res) => {
     })
 });
 
-app.get('/about', (req, res) =>{
+app.get('/about', (req, res) => {
     res.render('about.hbs', {
         pageTitle: 'About page',
+    });
+});
+
+
+app.get('/projects', (req, res) => {
+    res.render('projects.hbs', {
+        pageTitle: 'Projects page',
+        projectsMessage: 'Here al my projects will be listed'
     });
 });
 
@@ -61,7 +69,7 @@ app.get('/bad', (req, res) => {
     res.send({
         errorCode: 401,
         errorMessage: 'Cannot complete request'
-    })
+    });
 });
 
 
